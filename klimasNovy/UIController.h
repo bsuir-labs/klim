@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <io.h>
 #include "DataManager.h"
+#include "Authorization.h"
 
 class UIController
 {
@@ -14,10 +15,11 @@ protected:
     std::stack<Layout*> m_lstack;
 public:
     DataManager* m_dm;
+    Authorization* m_auth;
     Layout* layout;
 
     UIController();
-    UIController(DataManager* dm);
+    UIController(DataManager*, Authorization*);
     virtual ~UIController();
 
     void render();

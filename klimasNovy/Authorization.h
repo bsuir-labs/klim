@@ -17,6 +17,8 @@ public:
     Authorization();
     virtual ~Authorization();
 
+    bool exists(std::string);
+
     void setSource(std::string);
     void loadData();
     void saveData();

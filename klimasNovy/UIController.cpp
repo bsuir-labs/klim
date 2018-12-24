@@ -4,18 +4,14 @@
 
 UIController::UIController()
 {
-    //std::ios_base::sync_with_stdio(0);
     _setmode(_fileno(stdout), _O_U8TEXT);
-    /*SetConsoleCP(1252);*/
-    /*wcin.imbue(std::locale(wcin.getloc(), new std::codecvt_utf16<wchar_t, 0x10ffff, std::consume_header>));
-*/
-
-    std::locale::global(locale("ru_RU.utf8"));
+    std::locale::global(locale("ru_RU.utf8")); // not sure if it is necessary
 }
 
-UIController::UIController(DataManager* dm):UIController()
+UIController::UIController(DataManager* dm, Authorization* auth):UIController()
 {
     m_dm = dm;
+    m_auth = auth;
 }
 
 

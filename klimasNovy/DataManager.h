@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
 #include "Record.h"
 
 using namespace std;
@@ -232,6 +233,8 @@ public:
             if (ok)
                 result.push_back(record);
         }
+
+        sort(result.begin(), result.end(), Record::compFName);
         return result;
     }
 };

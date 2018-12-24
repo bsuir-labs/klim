@@ -127,3 +127,9 @@ int Authorization::find(std::string username)
         return l;
     return -1;
 }
+
+bool Authorization::exists(std::string username)
+{
+    int res = find(username);
+    return res != -1;
+}

@@ -60,6 +60,9 @@
     <ClCompile Include="EditView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserAddView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataManager.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EditView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserAddView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

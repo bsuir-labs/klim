@@ -4,7 +4,7 @@
 #include "MainMenu.h"
 
 
-LoginView::LoginView(Authorization* a):auth(a)
+LoginView::LoginView()
 {
 }
 
@@ -28,7 +28,7 @@ void LoginView::run()
         wcout << L"Пароль:" << endl;
         getline(cin, password);
 
-        result = auth->authorize(username, password);
+        result = m_master_controller->m_auth->authorize(username, password);
 
         m_master_controller->clr_scr();
 

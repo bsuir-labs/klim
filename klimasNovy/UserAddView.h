@@ -1,12 +1,11 @@
 #pragma once
 #include "Layout.h"
-
-class LoginView :
+class UserAddView :
     public Layout
 {
 public:
-    LoginView();
-    virtual ~LoginView();
+    UserAddView();
+    virtual ~UserAddView();
 
     virtual void run();
 };

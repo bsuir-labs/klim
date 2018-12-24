@@ -2,6 +2,7 @@
 #include "UIController.h"
 #include "ListView.h"
 #include "AddView.h"
+#include "UserAddView.h"
 
 MainMenu::MainMenu()
 {
@@ -60,7 +61,7 @@ void MainMenu::processChoice(int c)
             m_master_controller->setLayout(new AddView());
             break;
         case 3:
-
+            m_master_controller->setLayout(new UserAddView());
             break;
         case 4:
             m_master_controller->m_dm->saveData();

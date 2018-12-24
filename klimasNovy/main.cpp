@@ -14,13 +14,13 @@ int main()
 {
     DataManager data_manager;
     setup_data_manager(data_manager);
-
-    UIController controller(&data_manager);
     
     Authorization auth;
     setup_authorization(auth);
 
-    controller.setLayout(new LoginView(&auth));
+    UIController controller(&data_manager, &auth);
+
+    controller.setLayout(new LoginView());
 
     while (true)
     {
