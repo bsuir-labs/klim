@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <string>
 #include <iostream>
@@ -8,13 +8,13 @@ class UIController;
 class Layout
 {
 protected:
-    UIController* m_master_controller;
+    UIController* m_master_controller; // указатель на управляющий контроллер
 public:
-    Layout();
-    virtual ~Layout();
+    Layout(); // конструктор
+    virtual ~Layout(); // деструктор
 
-    virtual void run() = 0;
+    virtual void run() = 0; // чисто виртуальный метод вывода
 
-    void setMaster(UIController*);
+    void setMaster(UIController*); // задаём управляющий контроллер
 };
 

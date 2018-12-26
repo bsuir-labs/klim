@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Layout.h"
 
 class LoginView :
@@ -8,6 +8,6 @@ public:
     LoginView();
     virtual ~LoginView();
 
-    virtual void run();
+    virtual void run(); // вывод менюшки
 };
 

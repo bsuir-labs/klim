@@ -13,7 +13,7 @@ UserAddView::~UserAddView()
 }
 
 
-void UserAddView::run()
+void UserAddView::run() // вывод меню
 {
     using namespace std;
 
@@ -23,24 +23,32 @@ void UserAddView::run()
     bool ok = false;
 
     do {
+        wcout << L"Для отмены, нажмите enter, оставив поле для логина пустым\n\n";
         wcout << L"Логин нового пользователя:" << endl;
         getc(stdin);
-        getline(cin, username);
+        getline(cin, username); 
+
+        if (username == "")
+        {
+            m_master_controller->pop_ui(); // отменяем 
+            return;
+        }
+
         wcout << L"Пароль нового пользователя:" << endl;
         getline(cin, password);
 
-        m_master_controller->clr_scr();
+        m_master_controller->clr_scr();                  // очищаем экран
 
-        if (m_master_controller->m_auth->exists(username))
+        if (m_master_controller->m_auth->exists(username)) // проверяем существование пользователя
         {
             wcout << L"Пользователь с таким именем уже существует :с" << endl;
         }
         else {
             ok = true;
-            m_master_controller->m_auth->addUser(username, password);
-            m_master_controller->m_auth->saveData();
+            m_master_controller->m_auth->addUser(username, password); // добавляем пользователя в бд
+            m_master_controller->m_auth->saveData(); // сохраняем изменения бд в файл
         }
-    } while (!ok);
+    } while (!ok); 
     
-    m_master_controller->pop_ui();
+    m_master_controller->pop_ui(); // возвращаемся назад
 }

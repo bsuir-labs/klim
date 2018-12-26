@@ -25,8 +25,7 @@ void RecordView::run()
 
     int choice;
     bool ok = false;
-    do {
-        //m_master_controller->clr_scr();
+    do {                                             // чтение выбора пользователя
         wcout << L"0 - - - Вернуться назад\n";
         wcout << L"1 - - - Изменить запись\n";
         wcout << L"2 - - - Удалить запись\n";
@@ -48,14 +47,14 @@ void RecordView::run()
     switch (choice)
     {
         case 0:
-            m_master_controller->pop_ui();
+            m_master_controller->pop_ui(); // вернуться назад
             break;
         case 1:
             // edit
-            m_master_controller->setLayout(new EditView(m_record));
+            m_master_controller->setLayout(new EditView(m_record)); // изменить запись
             break;
         case 2:
-            wcout << L"Вы уверены? Введите 1, чтобы продолжить\n> ";
+            wcout << L"Вы уверены? Введите 1, чтобы продолжить\n> "; // удаляем запись
             cin >> t;
             if (cin.fail())
             {

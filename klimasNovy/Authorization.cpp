@@ -1,4 +1,4 @@
-#include "Authorization.h"
+﻿#include "Authorization.h"
 
 
 
@@ -17,13 +17,12 @@ void Authorization::setSource(std::string source)
     m_db_source = source;
 }
 
-void Authorization::loadData()
-{
+void Authorization::loadData() // чтение данных из файла
+{                               // (см. DataManager)
     std::ifstream file(m_db_source, std::ios::in | std::ios::binary);
     if (!file) {
         throw "no such file";
     }
-
     size_t sz = 0;
     file.read((char*)&sz, sizeof(size_t));
 
@@ -49,11 +48,11 @@ void Authorization::loadData()
         delete[] password;
     }
     file.close();
-    sortData();
+    sortData(); // сортируем для работы бинарного поиска
 }
 
 
-void Authorization::saveData()
+void Authorization::saveData() // сохранение данных (см. DataManager)
 {
     std::ofstream file(m_db_source, std::ios::out | std::ios::binary);
     if (!file) {
@@ -77,44 +76,44 @@ void Authorization::saveData()
     file.close();
 }
 
-void Authorization::sortData()
+void Authorization::sortData() // сортировка данных
 {
-    std::sort(m_users.begin(), m_users.end());
+    std::sort(m_users.begin(), m_users.end()); // стандартная ф-ция сортировки
 }
 
-void Authorization::addUser(std::string username, std::string password)
+void Authorization::addUser(std::string username, std::string password) // добавление нового пользователя
 {
-    SHA256 sha256;
-    std::string hash = sha256(password);
-    User user(username, hash);
+    SHA256 sha256;      // класс шифрования
+    std::string hash = sha256(password); // получаем хэш пароля (шифруем его)
+    User user(username, hash);  // создаём нового пользователя 
 
-    m_users.push_back(user);
-    sortData();
-    saveData();
+    m_users.push_back(user);  // добавляем его в массив пользователей
+    sortData();   // сортируем массив
+    saveData();    // сохраняем данные в файл
 }
 
-User Authorization::authorize(std::string username, std::string password)
+User Authorization::authorize(std::string username, std::string password) // авторизация пользователя
 {
-    SHA256 sha256;
-    std::string hash = sha256(password);
+    SHA256 sha256;   // класс шифрования
+    std::string hash = sha256(password); // получаем хэш пароля
 
-    int index = find(username);
-    if (index == -1)
+    int index = find(username);  // ищем пользователя по имени
+    if (index == -1)   // если не нашли
     {
-        return User(); // anonymous user
+        return User(); // возвращаем анонимного пользователя
     }
 
-    if (hash.compare(m_users[index].password()) == 0)
-        return m_users[index];
+    if (hash.compare(m_users[index].password()) == 0) // сравниваем хэши паролей
+        return m_users[index];  // возвращаем залогиненного пользователя
 
-    return User();
+    return User();  // возвращаем анонимного пользователя
 }
 
-int Authorization::find(std::string username)
+int Authorization::find(std::string username) // поиск индекса пользователя по имени
 {
-    if (m_users.size() == 0) return -1;
+    if (m_users.size() == 0) return -1; 
 
-    int l = 0, r = m_users.size() - 1;
+    int l = 0, r = m_users.size() - 1; // бинарный поиск
     while (l < r)
     {
         int mid = (l + r) / 2;
@@ -128,8 +127,8 @@ int Authorization::find(std::string username)
     return -1;
 }
 
-bool Authorization::exists(std::string username)
+bool Authorization::exists(std::string username) // проверка на существование
 {
-    int res = find(username);
-    return res != -1;
+    int res = find(username); // пытаемся найти.
+    return res != -1; 
 }

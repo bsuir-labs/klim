@@ -1,11 +1,11 @@
-#include "UIController.h"
+﻿#include "UIController.h"
 #include <locale>
 #include <codecvt>
 
-UIController::UIController()
+UIController::UIController() 
 {
-    _setmode(_fileno(stdout), _O_U8TEXT);
-    std::locale::global(locale("ru_RU.utf8")); // not sure if it is necessary
+    _setmode(_fileno(stdout), _O_U8TEXT); // настраиваем консоль на русский лад
+    //std::locale::global(locale("ru_RU.utf8")); // not sure if it is necessary
 }
 
 UIController::UIController(DataManager* dm, Authorization* auth):UIController()
@@ -15,26 +15,16 @@ UIController::UIController(DataManager* dm, Authorization* auth):UIController()
 }
 
 
-UIController::~UIController()
+UIController::~UIController() // деструктор
 {
 }
 
 void UIController::render()
 {
-    //wprintf(L"%s", layout->render().c_str());
-    //_putws(layout->render().c_str());
-    layout->run();
-    //std::wstring res = layout->render();
-    //std::wcout << res;
+    layout->run(); // полиморфизм
 }
 
-void UIController::interact()
-{
-    // nothing!
-    //layout->interact();
-}
-
-void UIController::clr_scr(char fill)
+void UIController::clr_scr(char fill) // очистка консоли
 {
     COORD tl = { 0,0 };
     CONSOLE_SCREEN_BUFFER_INFO s;
@@ -46,24 +36,24 @@ void UIController::clr_scr(char fill)
     SetConsoleCursorPosition(console, tl);
 }
 
-void UIController::quit(int exitcode)
+void UIController::quit(int exitcode) // выход из программы
 {
     exit(exitcode);
 }
 
-void UIController::setLayout(Layout* l)
+void UIController::setLayout(Layout* l) // задаём новую менюшку
 {
     m_lstack.push(l);
     layout = l;
     layout->setMaster(this);
 }
 
-void UIController::pop_ui()
+void UIController::pop_ui() // удаление менюшки
 {
     if (m_lstack.size() == 1) return;
 
     delete m_lstack.top();
     m_lstack.pop();
     layout = m_lstack.top();
-    layout->setMaster(this);
+    //layout->setMaster(this);
 }

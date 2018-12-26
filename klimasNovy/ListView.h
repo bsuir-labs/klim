@@ -10,6 +10,8 @@ public:
     virtual ~ListView();
 
     virtual void run();
+
+private:
     void getInput(vector<Record>&);
 };
 

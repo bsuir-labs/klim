@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Layout.h"
 #include <iostream>
 #include <Windows.h>
@@ -12,24 +12,23 @@
 class UIController
 {
 protected:
-    std::stack<Layout*> m_lstack;
+    std::stack<Layout*> m_lstack; // стэк менюшек
 public:
-    DataManager* m_dm;
-    Authorization* m_auth;
-    Layout* layout;
+    DataManager* m_dm; // указатель на базу данных
+    Authorization* m_auth; // указатель на бд пользователей
+    Layout* layout; // указатель на текущую менюшку
 
-    UIController();
-    UIController(DataManager*, Authorization*);
-    virtual ~UIController();
+    UIController(); // конструктор
+    UIController(DataManager*, Authorization*); // конструктор
+    virtual ~UIController(); // деструктор
 
-    void render();
-    void interact();
-    void clr_scr(char fill = ' ');
+    void render(); // вывод текущей менюшки
+    void clr_scr(char fill = ' '); // очистка экрана
 
-    void quit(int);
+    void quit(int); // завершение приложения
 
     // setters;
-    void setLayout(Layout*);
-    void pop_ui();
+    void setLayout(Layout*); // задаём новую менюшку
+    void pop_ui(); // удаляем текущую менюшку
 };
 

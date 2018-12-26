@@ -1,12 +1,12 @@
-#pragma once
+﻿#pragma once
 #include "Layout.h"
 class AddView :
     public Layout
 {
 public:
-    AddView();
-    virtual ~AddView();
+    AddView();          // конструктор
+    virtual ~AddView(); // деструктор
 
-    virtual void run();
+    virtual void run(); // вывод
 };
 

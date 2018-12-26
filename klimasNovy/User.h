@@ -1,27 +1,28 @@
-#pragma once
+﻿#pragma once
 #include <string>
 class User
 {
 protected:
-    std::string m_username;
-    std::string m_password;
-    unsigned m_permissions;
-    bool m_anonymous;
+    std::string m_username; // логин
+    std::string m_password; // пароль
+    unsigned m_permissions; // уровни доступа
+    bool m_anonymous;       // флаг, что пользователь анонимен (не залогинен)
 public:
-    User();
-    User(std::string username, std::string password);
-    virtual ~User();
+    User(); // конструктор
+    User(std::string username, std::string password); // конструктор по логину и паролю
+    virtual ~User();   // деструктор
 
-    void setPermissions(unsigned);
-    bool allowed(unsigned);
-    bool anonymous();
+    void setPermissions(unsigned);  // задаём права доступа
+    bool allowed(unsigned); // проверям права доступа
+    bool anonymous();   // проверка на анонимность (что пользователь залогинен)
 
-    std::string username();
-    std::string password();
+    std::string username(); // получаем имя пользователя
+    std::string password(); // получаем пароль (хэш)
 
-    friend bool operator< (const User& lhs, const User& rhs);// { return m_value < rhs.m_value; }
-    friend bool operator> (const User& lhs, const User& rhs);// { return rhs < *this; }
-    friend bool operator<=(const User& lhs, const User& rhs);// { return !(*this > rhs); }
-    friend bool operator>=(const User& lhs, const User& rhs);// { return !(*this < rhs); }
+    // операторы сравнения
+    friend bool operator< (const User& lhs, const User& rhs);
+    friend bool operator> (const User& lhs, const User& rhs);
+    friend bool operator<=(const User& lhs, const User& rhs);
+    friend bool operator>=(const User& lhs, const User& rhs);
 };
 

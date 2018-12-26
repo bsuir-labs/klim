@@ -1,14 +1,14 @@
-#include "User.h"
+﻿#include "User.h"
 
 
 
-User::User()
+User::User() // создание анонимного пользователя
 {
     m_anonymous = true;
 }
 
 
-User::User(std::string username, std::string password)
+User::User(std::string username, std::string password) // создание залогиненого пользователя
 {
     m_username = username;
     m_password = password;
@@ -26,7 +26,7 @@ void User::setPermissions(unsigned permissions)
     m_permissions = permissions;
 }
 
-bool User::allowed(unsigned permissions)
+bool User::allowed(unsigned permissions) // проверка прав
 {
     return bool(m_permissions & permissions);
 }

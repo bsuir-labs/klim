@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Layout.h"
 #include "Record.h"
 
@@ -6,12 +6,12 @@ class RecordView :
     public Layout
 {
 protected:
-    Record m_record;
+    Record m_record; // текущая запись
 public:
-    RecordView(Record);
-    virtual ~RecordView();
+    RecordView(Record); // конструктор
+    virtual ~RecordView(); // деструктор
 
-    virtual void run();
+    virtual void run(); // вывод
 
 };
 

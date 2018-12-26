@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <string>
 #include <fstream>
@@ -12,32 +12,32 @@ using namespace std;
 class DataManager
 {
 protected:
-    string m_source_file;
-    vector<Record> m_data;
+    string m_source_file; // имя файла с бд
+    vector<Record> m_data; // массив данных 
 
-    unsigned m_last_changed;
+    unsigned m_last_changed; //                                         !!!!!!! TODO: delete
 public:
-    DataManager() : m_last_changed(0) {}
-    virtual ~DataManager() {}
+    DataManager() : m_last_changed(0) {} // конструктор
+    virtual ~DataManager() {} // деструктор
 
-    int setSource(const string& filename)
+    int setSource(const string& filename) // задаём имя файла с бд
     {
         m_source_file = filename;
         return 0;
     }
 
-    int loadData()
+    int loadData() // загрузка данных из бд
     {
-        ifstream filer(m_source_file.c_str(), ios::in | ios::binary);
+        ifstream filer(m_source_file.c_str(), ios::in | ios::binary); // поток ввода из файла
 
-        if (!filer) {
-            throw "no such file";
+        if (!filer) {               // если файл не открылся
+            throw "no such file"; // кидаем исключение
         }
 
         size_t bufferSize = 0;
-        filer.read((char*)&bufferSize, sizeof(size_t));
+        filer.read((char*)&bufferSize, sizeof(size_t)); // читаем размер массива
 
-        m_data.clear();
+        m_data.clear(); // на всякий случай очищаем текущий массив данных
 
         for (size_t i = 0; i < bufferSize; ++i)
         {
@@ -51,7 +51,7 @@ public:
             wchar_t* lname;
             wchar_t* addr;
             wchar_t* phone;
-
+                                                 
             filer.read((char*)&id, sizeof(int));
             filer.read((char*)&fname_len, sizeof(size_t));
             filer.read((char*)&lname_len, sizeof(size_t));
@@ -68,7 +68,7 @@ public:
             filer.read((char*)addr, addr_len * sizeof(wchar_t));
             filer.read((char*)phone, phone_len * sizeof(wchar_t));
 
-            Record r(
+            Record r( // создаём новую запись на основе прочитанных данных
                 id,
                 fname,
                 lname,
@@ -76,31 +76,31 @@ public:
                 phone
             );
 
-            m_data.push_back(r);
+            m_data.push_back(r); // добавляем её в массив
 
-            delete[] fname;
+            delete[] fname; // очищаем память
             delete[] lname;
             delete[] addr;
             delete[] phone;
         }
 
-        filer.close();
+        filer.close(); // закрываем файл
 
         return 0;
     }
 
-    int saveData()
+    int saveData() // сохранение данных
     {
-        ofstream filew(m_source_file.c_str(), ios::out | ios::binary);
+        ofstream filew(m_source_file.c_str(), ios::out | ios::binary); // открываем файл для записи
 
         if (!filew) {
             return -1;
         }
 
-        size_t sz = m_data.size();
-        filew.write((char*)&sz, sizeof(m_data.size()));
+        size_t sz = m_data.size();                      // размер массива
+        filew.write((char*)&sz, sizeof(m_data.size())); // записываем его в файл
 
-        for (size_t i = 0; i < m_data.size(); ++i)
+        for (size_t i = 0; i < m_data.size(); ++i) 
         {
 
             unsigned id = m_data[i].id();
@@ -137,21 +137,21 @@ public:
             filew.write((char*)addr, addr_len * sizeof(wchar_t));
             filew.write((char*)phone, phone_len * sizeof(wchar_t));
 
-            delete[] fname;
+            delete[] fname; // подчищаем память
             delete[] lname;
             delete[] addr;
             delete[] phone;
         }
-        filew.close();
+        filew.close(); // закрываем файл
         return 0;
     }
 
-    void setData(vector<Record>& data)
+    void setData(vector<Record>& data)  // задаём новый массив данных
     {
         m_data = data;
     }
 
-    void setById(Record& r, unsigned id)
+    void setById(Record& r, unsigned id) // изменение записи по id
     {
         int set_index = -1;
 
@@ -165,12 +165,12 @@ public:
             m_data[set_index] = r;
     }
 
-    size_t size()
+    size_t size() // получаем размер массива с данными
     {
         return m_data.size();
     }
 
-    Record operator[](size_t index) const
+    Record operator[](size_t index) const // перегрузка оператора []
     {
         return m_data[index];
     }
@@ -180,47 +180,47 @@ public:
         return m_data[index];
     }
 
-    void remove(unsigned id)
+    void remove(unsigned id) // удаление записи по id
     {
         int del_index = -1;
 
-        for (size_t i = 0; i < m_data.size() && del_index == -1; ++i)
+        for (size_t i = 0; i < m_data.size() && del_index == -1; ++i) // поиск индекса нужной записи
             if (m_data[i].id() == id)
                 del_index = i;
 
         if (del_index == -1) return;
 
-        for (size_t i = del_index; i < m_data.size() - 1; ++i)
+        for (size_t i = del_index; i < m_data.size() - 1; ++i) // загоняем её в конец
             swap(m_data[i], m_data[i + 1]);
 
-        m_data.pop_back();
+        m_data.pop_back(); // и удаляем
         incLastChanged();
     }
 
-    void incLastChanged()
+    void incLastChanged() // увеличиваем счётчик изменений
     {
         m_last_changed++;
     }
 
-    unsigned lastChanged() const
+    unsigned lastChanged() const // получаем счётчик изменений
     {
         return m_last_changed;
     }
 
-    void append_data(Record c)
+    void append_data(Record c) // добавление новой записи
     {
-        c.set_id(m_data.empty() ? 0 : m_data.back().id() + 1);
+        c.set_id(m_data.empty() ? 0 : m_data.back().id() + 1); // присваиваем id
         m_data.push_back(c);
     }
 
-    vector<Record> filter(wstring fname, wstring lname, wstring addr, wstring phone)
+    vector<Record> filter(wstring fname, wstring lname, wstring addr, wstring phone) // фильтрация
     {
         if (m_data.empty()) return vector<Record>();
 
         vector<Record> result;
         for (auto record : m_data)
         {
-            bool ok = true;
+            bool ok = true; // если ok, то запись подходит под все фильтры
             if (fname != L"" && record.first_name().find(fname) == wstring::npos)
                 ok = false;
             if (lname != L"" && record.last_name().find(lname) == wstring::npos)
@@ -234,7 +234,7 @@ public:
                 result.push_back(record);
         }
 
-        sort(result.begin(), result.end(), Record::compFName);
+        sort(result.begin(), result.end(), Record::compFName); // Record::compLName - по фамилии
         return result;
     }
 };

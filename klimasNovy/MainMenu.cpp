@@ -14,7 +14,7 @@ MainMenu::~MainMenu()
 }
 
 
-void MainMenu::run()
+void MainMenu::run() // вывод меню
 {
     using namespace std;
 
@@ -40,7 +40,7 @@ void MainMenu::run()
         else {
             ok = true;
         }
-    } while (cin.bad() || (choice < 0 || choice > 5));
+    } while (cin.bad() || (choice < 0 || choice > 4));
 
     processChoice(choice);
 }
@@ -50,21 +50,19 @@ void MainMenu::processChoice(int c)
     switch (c)
     {
         case 0:
-            m_master_controller->quit(0);
+            m_master_controller->quit(0);   // выход из программы
             break;
         case 1:
-            // list everything
-            m_master_controller->setLayout(new ListView());
+            m_master_controller->setLayout(new ListView()); // список всех записей
             break;
         case 2:
-            // add new
-            m_master_controller->setLayout(new AddView());
+            m_master_controller->setLayout(new AddView()); // добавление новой записи
             break;
         case 3:
-            m_master_controller->setLayout(new UserAddView());
+            m_master_controller->setLayout(new UserAddView()); // добавление нового пользователя
             break;
         case 4:
-            m_master_controller->m_dm->saveData();
+            m_master_controller->m_dm->saveData(); // сохранение изменений
             break;
     }
 }

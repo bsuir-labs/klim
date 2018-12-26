@@ -12,7 +12,7 @@ EditView::~EditView()
 }
 
 
-void EditView::run()
+void EditView::run() // вывод меню
 {
     using namespace std;
 
@@ -28,21 +28,25 @@ void EditView::run()
     wstring addr;
     wstring phone;
 
-    wcout << L"Новое имя:\n";
+    wcout << L"Новое имя (оставьте пустым, чтоб не изменять):\n";
     getc(stdin);
     fname = WIO::readw();
+    if (fname == L"") wcout << m_record.first_name() << "\n\n";
     wcout << L"Новая фамилия:\n";
     lname = WIO::readw();
+    if (lname == L"") wcout << m_record.last_name() << "\n\n";
     wcout << L"Новый адрес:\n";
     addr = WIO::readw();
+    if (addr == L"") wcout << m_record.address() << "\n\n";
     wcout << L"Новый номер телефона:\n";
     phone = WIO::readw();
+    if (phone == L"") wcout << m_record.phone() << "\n\n";
 
-    m_record.set_first_name(fname);
-    m_record.set_last_name(lname);
-    m_record.set_address(addr);
-    m_record.set_phone(phone);
+    if (fname != L"") m_record.set_first_name(fname); // не изменяем, если пустое
+    if (lname != L"") m_record.set_last_name(lname);
+    if (addr != L"")  m_record.set_address(addr);
+    if (phone != L"") m_record.set_phone(phone);
 
-    m_master_controller->m_dm->setById(m_record, m_record.id());
-    m_master_controller->pop_ui();
+    m_master_controller->m_dm->setById(m_record, m_record.id()); // обновляем запись в бд
+    m_master_controller->pop_ui();                              // возвращаемся назад
 }

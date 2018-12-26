@@ -1,5 +1,4 @@
-//#include "InsuranceKeeper.h"
-#include "DataManager.h"
+﻿#include "DataManager.h"
 #include "UIController.h"
 #include "Authorization.h"
 #include "LoginView.h"
@@ -12,13 +11,13 @@ int setup_authorization(Authorization&);
 
 int main()
 {
-    DataManager data_manager;
-    setup_data_manager(data_manager);
+    DataManager data_manager;  // Структура для работы с данными
+    setup_data_manager(data_manager); // Инициализация структуры
     
-    Authorization auth;
-    setup_authorization(auth);
+    Authorization auth; // Структура для авторизации
+    setup_authorization(auth); // инициализация
 
-    UIController controller(&data_manager, &auth);
+    UIController controller(&data_manager, &auth); 
 
     controller.setLayout(new LoginView());
 
@@ -26,7 +25,6 @@ int main()
     {
         controller.clr_scr();
         controller.render();
-        controller.interact();
     }
 
     return 0;
@@ -34,13 +32,13 @@ int main()
 
 int setup_data_manager(DataManager& dm)
 {
-    dm.setSource(DATA_SOURCE);
+    dm.setSource(DATA_SOURCE); // Задаём имя файла с данными
     try {
-        dm.loadData();
+        dm.loadData(); // пытаемся открыть файл
     }
-    catch (...)
+    catch (...) // если что-то не получилось
     {
-        dm.saveData();
+        dm.saveData(); // создаём новый
         return 1;
     }
     return 0;
@@ -48,12 +46,12 @@ int setup_data_manager(DataManager& dm)
 
 int setup_authorization(Authorization& auth)
 {
-    auth.setSource(USERS_SOURCE);
+    auth.setSource(USERS_SOURCE); // Задаём имя файла с пользователями
     try {
         auth.loadData();
     }
     catch (...) {
-        auth.addUser(
+        auth.addUser( // стандартный пользователь
             "superadmin",
             "superpassword"
         );

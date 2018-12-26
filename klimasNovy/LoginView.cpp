@@ -14,11 +14,11 @@ LoginView::~LoginView()
 }
 
 
-void LoginView::run()
+void LoginView::run() // вывод меню
 {
     using namespace std;
 
-    User result;
+    User result; // пользователь текущий
     string username,
         password;
 

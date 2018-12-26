@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Layout.h"
 #include "Record.h"
 
@@ -8,9 +8,9 @@ class EditView :
 protected:
     Record m_record;
 public:
-    EditView(Record);
-    virtual ~EditView();
+    EditView(Record); // деструктор
+    virtual ~EditView(); // конструктор
 
-    virtual void run();
+    virtual void run(); // вывод меню
 };
 

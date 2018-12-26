@@ -12,14 +12,10 @@ AddView::~AddView()
 }
 
 
-void AddView::run()
+void AddView::run() // вывод
 {
     using namespace std;
 
-    //wchar_t fname[50];
-    //wchar_t lname[50];
-    //wchar_t addr[50];
-    //wchar_t phone[50];
     wstring fname;
     wstring lname;
     wstring addr;
@@ -27,7 +23,7 @@ void AddView::run()
 
     wcout << L"Имя:\n";
     getc(stdin);
-    fname = WIO::readw();
+    fname = WIO::readw(); // ввод данных
     wcout << L"Фамилия:\n";
     lname = WIO::readw();
 
@@ -37,8 +33,8 @@ void AddView::run()
     wcout << L"Номер телефона:\n";
     phone = WIO::readw();
 
-    m_master_controller->m_dm->append_data(
-        Record(
+    m_master_controller->m_dm->append_data( // добавляем запись в бд
+        Record(         // создаём новую запись на основе введённых данных
             0,
             fname,
             lname,
@@ -46,5 +42,5 @@ void AddView::run()
             phone
         )
     );
-    m_master_controller->pop_ui();
+    m_master_controller->pop_ui(); // вернулись обратно
 }
