@@ -1,5 +1,5 @@
 ﻿#include "Authorization.h"
-
+#include <utility>
 
 
 Authorization::Authorization()
@@ -91,6 +91,21 @@ void Authorization::addUser(std::string username, std::string password) // до�
     sortData();   // сортируем массив
     saveData();    // сохраняем данные в файл
 }
+
+
+void Authorization::removeUser(std::string username) // удаление пользователя
+{
+    int index = find(username); // ищем по логину
+    if (index == -1)
+        return;
+
+    for (size_t i = index; i < m_users.size() - 1; ++i) // сдвигаем в конец
+        std::swap(m_users[i + 1], m_users[i]);
+
+    m_users.pop_back(); // удаляем
+    saveData(); // сохраняем изменения
+}
+
 
 User Authorization::authorize(std::string username, std::string password) // авторизация пользователя
 {

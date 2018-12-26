@@ -25,5 +25,6 @@ public:
     void sortData();                // сортировка данных
 
     void addUser(std::string username, std::string password);   // добавление нового пользователя
+    void removeUser(std::string username);                      // удаление пользователя
     User authorize(std::string username, std::string password);  // авторизация пользователя
 };

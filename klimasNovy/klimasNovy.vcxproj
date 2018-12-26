@@ -130,6 +130,7 @@
     <ClCompile Include="UIController.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserAddView.cpp" />
+    <ClCompile Include="UserRemoveView.cpp" />
     <ClCompile Include="wio.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="EditView.h" />
     <ClInclude Include="RecordView.h" />
     <ClInclude Include="UserAddView.h" />
+    <ClInclude Include="UserRemoveView.h" />
     <ClInclude Include="wio.h" />
     <ClInclude Include="Layout.h" />
     <ClInclude Include="ListView.h" />

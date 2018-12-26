@@ -3,6 +3,7 @@
 #include "ListView.h"
 #include "AddView.h"
 #include "UserAddView.h"
+#include "UserRemoveView.h"
 
 MainMenu::MainMenu()
 {
@@ -27,7 +28,8 @@ void MainMenu::run() // вывод меню
         wcout << L"\t1 - Поиск и фильтрация" << "\n";
         wcout << L"\t2 - Новая запись" << "\n";
         wcout << L"\t3 - Добавить пользователя" << "\n";
-        wcout << L"\t4 - Сохранить изменения" << "\n";
+        wcout << L"\t4 - Удалить пользователя" << "\n";
+        wcout << L"\t5 - Сохранить изменения" << "\n";
         wcout << L"\t0 - Выйти" << "\n";
 
         wcout << L"Ваш выбор > ";
@@ -40,7 +42,7 @@ void MainMenu::run() // вывод меню
         else {
             ok = true;
         }
-    } while (cin.bad() || (choice < 0 || choice > 4));
+    } while (cin.bad() || (choice < 0 || choice > 5));
 
     processChoice(choice);
 }
@@ -62,6 +64,9 @@ void MainMenu::processChoice(int c)
             m_master_controller->setLayout(new UserAddView()); // добавление нового пользователя
             break;
         case 4:
+            m_master_controller->setLayout(new UserRemoveView()); // Удаление пользователя
+            break;
+        case 5:
             m_master_controller->m_dm->saveData(); // сохранение изменений
             break;
     }
