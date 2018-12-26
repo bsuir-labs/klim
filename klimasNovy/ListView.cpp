@@ -1,5 +1,6 @@
 ﻿#include "ListView.h"
 #include <iostream>
+#include <iomanip>
 #include "UIController.h"
 #include "RecordView.h"
 #include "wio.h"
@@ -43,13 +44,26 @@ void ListView::run() // вывод меню
         phone_filter
     );
 
+    streamsize fname_sz = 0,
+        lname_sz = 0,
+        addr_sz = 0,
+        phone_sz = 0;
+
+    for (auto x: result)
+    {
+        fname_sz = max((unsigned) fname_sz, x.first_name().size());
+        lname_sz = max((unsigned) lname_sz, x.last_name().size());
+        addr_sz = max((unsigned)addr_sz, x.address().size());
+        phone_sz = max((unsigned)phone_sz, x.phone().size());
+    }
+
     for (size_t i = 0; i < result.size(); ++i) // вывод
     {
         wcout << L"[" << i << L"] ";
-        wcout << result[i].first_name() << "\t";
-        wcout << result[i].last_name() << "\t";
-        wcout << result[i].address() << "\t";
-        wcout << result[i].phone() << "\t";
+        wcout << left << setw(fname_sz + 1) << result[i].first_name();
+        wcout << left << setw(lname_sz + 1) << result[i].last_name();
+        wcout << left << setw(addr_sz + 1) << result[i].address();
+        wcout << left << setw(phone_sz + 1) << result[i].phone();
         wcout << "\n";
     }
 
