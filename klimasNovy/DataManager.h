@@ -15,7 +15,7 @@ protected:
     string m_source_file; // имя файла с бд
     vector<Record> m_data; // массив данных 
 
-    unsigned m_last_changed; //                                         !!!!!!! TODO: delete
+    unsigned m_last_changed;
 public:
     DataManager() : m_last_changed(0) {} // конструктор
     virtual ~DataManager() {} // деструктор

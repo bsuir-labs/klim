@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AddView">
+    <Position X="10.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditView">
+    <Position X="14.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAABAAAAAAAAAAEAAAACAAAAAAA=</HashCode>
+      <FileName>EditView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecordView">
+    <Position X="16.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>RecordView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserAddView">
+    <Position X="10.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>UserAddView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserRemoveView">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserRemoveView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Layout">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAEAAAAAAAAACAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Layout.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListView">
+    <Position X="16.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgEAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>ListView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginView">
+    <Position X="14.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAA=</HashCode>
+      <FileName>LoginView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenu">
+    <Position X="12.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAACAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

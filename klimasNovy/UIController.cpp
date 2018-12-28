@@ -5,7 +5,6 @@
 UIController::UIController() 
 {
     _setmode(_fileno(stdout), _O_U8TEXT); // настраиваем консоль на русский лад
-    //std::locale::global(locale("ru_RU.utf8")); // not sure if it is necessary
 }
 
 UIController::UIController(DataManager* dm, Authorization* auth):UIController()
@@ -55,5 +54,4 @@ void UIController::pop_ui() // удаление менюшки
     delete m_lstack.top();
     m_lstack.pop();
     layout = m_lstack.top();
-    //layout->setMaster(this);
 }
