@@ -3,7 +3,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
-#include <stack>
+#include "Stack.h"
 #include <fcntl.h>
 #include <io.h>
 #include "DataManager.h"
@@ -12,7 +12,7 @@
 class UIController
 {
 protected:
-    std::stack<Layout*> m_lstack; // стэк менюшек
+    Stack<Layout*> m_lstack; // стэк менюшек
 public:
     DataManager* m_dm; // указатель на базу данных
     Authorization* m_auth; // указатель на бд пользователей

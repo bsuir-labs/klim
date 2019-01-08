@@ -7,20 +7,6 @@
       <FileName>AddView.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Authorization" Collapsed="true">
-    <Position X="24.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAYBIACAAAAAAAIBAAAADAAAAAAQAACQAAIAAAAAA=</HashCode>
-      <FileName>Authorization.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DataManager" Collapsed="true">
-    <Position X="26" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQEAABEACAAABAAEAJAAEAIgAAUAAAAAAEAIAAAAAAA=</HashCode>
-      <FileName>DataManager.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="EditView">
     <Position X="14.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
@@ -77,54 +63,5 @@
       <FileName>MainMenu.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Record" Collapsed="true">
-    <Position X="27.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEQAAAAwAEAEAQCQAAAAACAEAAIAAEQgAEAAABgARgA=</HashCode>
-      <FileName>Record.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SHA256" Collapsed="true">
-    <Position X="24.25" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAQEAABAAgAAEAAAAAAEAAIAAAAAAggAAAACAAA=</HashCode>
-      <FileName>sha256.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="UIController" Collapsed="true">
-    <Position X="26" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAIgAAAAAgIgCAAABCAAQgAA=</HashCode>
-      <FileName>UIController.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="User" Collapsed="true">
-    <Position X="27.75" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAABAAAAAAAgAAABAAAABQEAAEAAAACAAAAAAwAAAAA=</HashCode>
-      <FileName>User.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Typedef Name="uint8_t" Collapsed="true">
-    <Position X="27.75" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdint.h</FileName>
-    </TypeIdentifier>
-  </Typedef>
-  <Typedef Name="uint32_t" Collapsed="true">
-    <Position X="24.25" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdint.h</FileName>
-    </TypeIdentifier>
-  </Typedef>
-  <Typedef Name="uint64_t" Collapsed="true">
-    <Position X="26" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdint.h</FileName>
-    </TypeIdentifier>
-  </Typedef>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

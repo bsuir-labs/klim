@@ -139,6 +139,7 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="EditView.h" />
     <ClInclude Include="RecordView.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="UserAddView.h" />
     <ClInclude Include="UserRemoveView.h" />
     <ClInclude Include="wio.h" />

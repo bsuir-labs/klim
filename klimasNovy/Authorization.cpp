@@ -84,7 +84,7 @@ void Authorization::sortData() // сортировка данных
 void Authorization::addUser(std::string username, std::string password) // добавление нового пользователя
 {
     SHA256 sha256;      // класс шифрования
-    std::string hash = sha256(password); // получаем хэш пароля (шифруем его)
+    std::string hash = sha256.hash(password); // получаем хэш пароля (шифруем его)
     User user(username, hash);  // создаём нового пользователя 
 
     m_users.push_back(user);  // добавляем его в массив пользователей
@@ -110,7 +110,7 @@ void Authorization::removeUser(std::string username) // удаление пол�
 User Authorization::authorize(std::string username, std::string password) // авторизация пользователя
 {
     SHA256 sha256;   // класс шифрования
-    std::string hash = sha256(password); // получаем хэш пароля
+    std::string hash = sha256.hash(password); // получаем хэш пароля
 
     int index = find(username);  // ищем пользователя по имени
     if (index == -1)   // если не нашли
