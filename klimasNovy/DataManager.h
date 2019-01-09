@@ -7,17 +7,14 @@
 
 using namespace std;
 
-//template<class T>
-
 class DataManager
 {
 protected:
     string m_source_file; // имя файла с бд
     vector<Record> m_data; // массив данных 
 
-    unsigned m_last_changed;
 public:
-    DataManager() : m_last_changed(0) {} // конструктор
+    DataManager() /*: m_last_changed(0) */{} // конструктор
     virtual ~DataManager() {} // деструктор
 
     int setSource(const string& filename) // задаём имя файла с бд
@@ -146,11 +143,6 @@ public:
         return 0;
     }
 
-    void setData(vector<Record>& data)  // задаём новый массив данных
-    {
-        m_data = data;
-    }
-
     void setById(Record& r, unsigned id) // изменение записи по id
     {
         int set_index = -1;
@@ -194,17 +186,6 @@ public:
             swap(m_data[i], m_data[i + 1]);
 
         m_data.pop_back(); // и удаляем
-        incLastChanged();
-    }
-
-    void incLastChanged() // увеличиваем счётчик изменений
-    {
-        m_last_changed++;
-    }
-
-    unsigned lastChanged() const // получаем счётчик изменений
-    {
-        return m_last_changed;
     }
 
     void append_data(Record c) // добавление новой записи

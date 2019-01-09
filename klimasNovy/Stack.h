@@ -44,7 +44,7 @@ public:
         return m_st->m_value;
     }
 
-    T pop() const // получаем верхний и удаляем его
+    T pop() // получаем верхний и удаляем его
     {
         T val = m_st->m_value;
 
